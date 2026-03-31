@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Em busca da cidade perdida</title>
+    <link rel="stylesheet" href="style.css">    
 </head>
 <body>
     <main>
@@ -12,14 +13,46 @@
             <button class="btn-proximo" data-proximo="1">Rio de Janeiro</button>
             <button class="btn-proximo" data-proximo="2">Pernambuco</button>
         </div>
+
         <div class="passo" id="passo-1">
             <p>Você começa sua jornada no Rio de Janeiro, subindo o Pico da Tijuca ao amanhecer para encontrar a primeira pista.</p>
             <button class="btn-proximo" data-proximo="3">Procurar a pista no topo do pico</button>
             <button class="btn-proximo" data-proximo="4">Desistir e voltar para casa</button>
         </div>
-    </main> 
-        
-        
-        
+
+        <div class="passo" id="passo-2">
+            <p>Você viaja até Pernambuco e decide explorar as praias e o centro histórico de Olinda em busca de pistas.</p>
+            <button class="btn-proximo" data-proximo="3">Seguir para o centro histórico</button>
+            <button class="btn-proximo" data-proximo="4">Desistir e voltar para casa</button>
+        </div>
+
+        <div class="passo" id="passo-3">
+            <p>No local escolhido, você encontra uma inscrição antiga que fala sobre a próxima pista estar escondida em uma caverna misteriosa.</p>
+            <button class="btn-proximo" data-proximo="5">Explorar a caverna</button>
+        </div>
+
+        <div class="passo" id="passo-4">
+            <p>Você decide desistir da aventura e voltar para casa. Talvez a cidade perdida continue escondida para sempre...</p>
+        </div>
+
+        <div class="passo" id="passo-5">
+            <p>Dentro da caverna, você encontra símbolos misteriosos que indicam que está cada vez mais perto da cidade perdida!</p>
+            <button class="btn-proximo" data-proximo="0">Recomeçar a aventura</button>
+        </div>
+    </main>
+
+    <script>
+        const avanca = document.querySelectorAll('.btn-proximo');
+
+        avanca.forEach(button => {
+            button.addEventListener('click', function() {
+                const atual = document.querySelector('.ativo');
+                const proximoPasso = 'passo-' + this.dataset.proximo;
+
+                atual.classList.remove('ativo');
+                document.getElementById(proximoPasso).classList.add('ativo');
+            });
+        });
+    </script>
 </body>
 </html>
